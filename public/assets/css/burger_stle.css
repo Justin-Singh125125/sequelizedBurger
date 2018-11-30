@@ -1,0 +1,74 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+    scroll-behavior: smooth;
+    text-align:center;
+}
+.jumbotron{
+    text-align:center;
+    background:none;
+  width: 100%;
+  height: 100%;
+
+}
+#logo{
+    width: 450px;
+    height: 300px;
+}
+#menu{
+    width: 100%;
+    height: 100%;
+}
+.navbar{
+    background:red;
+}
+.navbar-nav{
+    color: white;
+}
+.burg-img{
+    width: 100px;
+    height: 75px;
+}
+.b{
+border-bottom: 2px solid red;
+}
+.card-body{
+    margin: 0 auto;
+    overflow: auto;
+    height: 400px;
+    text-align: left;
+}
+
+#right{
+   margin-right: auto;
+}
+#logo-title{
+    color: red;
+    font-weight: bold;
+}
+.nav-link, .navbar-brand{
+    color: white;
+    font-weight: bold;
+  
+}
+.nav-link{
+    font-size:20px;
+}
+.navbar-brand{
+    font-size: 30px;
+}
+
+.nav-link:hover, .navbar-brand:hover{
+    color: yellow;
+    font-weight: bold;
+}
+.navbar{
+    padding: 20px;
+}
+p{
+    font-size: 20px;
+}
+#add-burger{
+    text-align: left;
+}

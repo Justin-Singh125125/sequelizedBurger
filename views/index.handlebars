@@ -1,0 +1,86 @@
+<nav id="home" class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">INO BURGLER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#menu">Menu</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron">
+    <h1 id="logo-title">IN-N-OUT BURGER</h1>
+    <img id="logo" src="./assets/images/arrow.png" alt="">
+</div>
+
+
+
+<div id="menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="menu-burgers">
+                            <h2 class="b">Menu Burgers</h2>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        {{#each burgers}}
+                        {{#if this.devoured}}
+                        <p> <button id="right" type="button" class="devour btn btn-danger" data-id="{{this.id}}">Devour!</button><img
+                                class="burg-img" src="./assets/images/inout.jpg" alt="">{{this.burger_name}}
+
+                        </p>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="devoured-burgers">
+                            <h2 class="b">Devoured Burgers</h2>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{#each burgers}}
+                        {{#unless this.devoured}}
+                        <p> <button id="right" type="button" class="delete btn btn-danger" data-id="{{this.id}}">Delete
+                                Waste!</button><img class="burg-img" src="./assets/images/inout.jpg" alt="">{{this.burger_name}}
+
+                        </p>
+                        {{/unless}}
+                        {{/each}}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="newBurger">
+            <h2>Didn't Like what you saw, add your own burger</h2>
+            <form id="customized-burger">
+                <textarea name="customize" placeholder="cheese burger"></textarea><br>
+                <button id="add-burger" type="submit" class="btn btn-danger">Add Burger</button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+</div>
