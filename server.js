@@ -4,6 +4,11 @@ var PORT = process.env.PORT || 8080;
 
 var app = express();
 var db = require("./models");
+var passport = require("./config/passport");
+var session = require("express-session");
+
+
+
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -18,12 +23,16 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Import routes and give the server access to them.
 var routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync({ force: true }).then(function () {
     app.listen(PORT, function () {
         console.log("App now listening at localhost:" + PORT);
     });
