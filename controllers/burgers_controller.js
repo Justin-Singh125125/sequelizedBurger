@@ -5,6 +5,7 @@ var router = express.Router();
 var db = require('../models');
 
 var passport = require("../config/passport");
+var currentId;
 
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
@@ -13,7 +14,8 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/home");
+    console.log(req.user.id);
+    res.json(req.user.id);
 });
 
 // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -24,9 +26,9 @@ router.post("/signup", function (req, res) {
     db.User.create({
         email: req.body.email,
         password: req.body.password
-    }).then(function () {
+    }).then(function (data) {
 
-        res.json("/home");
+        res.json(data);
     })
 });
 
@@ -65,14 +67,18 @@ router.get("/", function (req, res) {
     })
 })
 router.get("/signup", function (req, res) {
+    console.log(req.body);
     res.render("signup");
 })
 router.get("/login", function (req, res) {
     res.render("login");
 })
-router.get("/home", function (req, res) {
+router.get("/home/:id", function (req, res) {
+    currentId = req.params.id
     db.Burgers.findAll({
-
+        where: {
+            UserId: req.params.id
+        }
     }).then(function (data) {
         //re renders the home page and grabs data to be filled
 
@@ -80,9 +86,11 @@ router.get("/home", function (req, res) {
     })
 })
 router.post("/add-burger", function (req, res) {
+    console.log("test " + currentId);
     db.Burgers.create({
         burger_name: req.body.burger_name,
-        devoured: req.body.devoured
+        devoured: req.body.devoured,
+        UserId: currentId
     }).then(function (data) {
         //re renders the home page
         res.render("index");

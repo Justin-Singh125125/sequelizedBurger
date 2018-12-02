@@ -27,8 +27,9 @@ $(document).ready(function () {
     $.post("/api/login", {
       email: email,
       password: password
-    }).then(function (data) {
-      window.location.replace(data);
+    }).then(function (id) {
+
+      window.location.assign("/home/" + id);
       // If there's an error, log the error
     }).catch(function (err) {
       console.log(err);

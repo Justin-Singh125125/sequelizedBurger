@@ -29,7 +29,8 @@ $(document).ready(function () {
       password: password
     }).then(function (data) {
 
-      window.location.replace(data);
+      localStorage.setItem("id", data.id);
+      window.location.assign("/home/" + data.id);
       // If there's an error, handle it by throwing up a bootstrap alert
     }).catch(handleLoginErr);
   }

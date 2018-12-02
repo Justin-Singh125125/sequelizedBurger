@@ -21,7 +21,7 @@
 </nav>
 <div class="jumbotron">
     <h1 id="logo-title">IN-N-OUT BURGER</h1>
-    <img id="logo" src="./assets/images/arrow.png" alt="">
+    <img id="logo" src="../assets/images/arrow.png" alt="">
 </div>
 
 
@@ -41,7 +41,7 @@
                         {{#each burgers}}
                         {{#if this.devoured}}
                         <p> <button id="right" type="button" class="devour btn btn-danger" data-id="{{this.id}}">Devour!</button><img
-                                class="burg-img" src="./assets/images/inout.jpg" alt="">{{this.burger_name}}
+                                class="burg-img" src="../assets/images/inout.jpg" alt="">{{this.burger_name}}
 
                         </p>
                         {{/if}}
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="newBurger">
-            <h2>Didn't Like what you saw, add your own burger</h2>
+            <h2>Add a burger if you are a new user or want a new taste</h2>
             <form id="customized-burger">
                 <textarea name="customize" placeholder="cheese burger"></textarea><br>
                 <button id="add-burger" type="submit" class="btn btn-danger">Add Burger</button>
